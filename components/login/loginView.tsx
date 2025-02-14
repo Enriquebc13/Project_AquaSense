@@ -10,7 +10,7 @@ export default function LoginView() {
         { label: "Usuario", value: "user" },
         { label: "Invitado", value: "guest" },
     ]);
-
+    
     return (
         <>
         <StatusBar  barStyle="light-content" backgroundColor='#1a1a2e'hidden={false} />
@@ -46,7 +46,6 @@ export default function LoginView() {
         
     );
 }
-
 const styles = StyleSheet.create({
     container: {
         alignItems: "center",
@@ -87,7 +86,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderRadius: 12,
         justifyContent: "center",
-        backgroundColor:"#1a1a2e",
+        backgroundColor:"green",
+        // backgroundColor:"#1a1a2e",
         // backgroundColor:"#120934"
     },
     btn1: {
