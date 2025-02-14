@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, ImageBackground, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 
 export default function LoginView() {
@@ -12,14 +12,14 @@ export default function LoginView() {
     ]);
 
     return (
-        
+        <>
+        <StatusBar  barStyle="light-content" backgroundColor='#1a1a2e'hidden={false} />
             <ImageBackground style={styles.fondo}
             source={require("../../assets/images/fondo.jpg")}>
                 
-          
             <Text style={styles.welcome}>Bienvenido {"\n"} a</Text>
             <Text style={styles.title}>A Q U A S E N C E</Text>
-            <Image source={require("../../assets/images/Logo1 (1).png")} style={styles.logo} />
+            <Image source={require("../../assets/images/logo.png")} style={styles.logo} />
            
             <View style={styles.Containerdropdown}>
             <DropDownPicker
@@ -31,7 +31,7 @@ export default function LoginView() {
                 setItems={setItems}
                 placeholder="Selecciona un usuario"
                 style={styles.dropdown}
-                textStyle={{ color: "white" }}
+                textStyle={{fontSize:25, color: "white" }}
                 dropDownContainerStyle={{ backgroundColor: "#333" }}
                 labelStyle={{ color: "white" }}
             />
@@ -42,6 +42,7 @@ export default function LoginView() {
             </TouchableOpacity>
             </View>
             </ImageBackground>
+            </>
         
     );
 }
@@ -64,6 +65,8 @@ const styles = StyleSheet.create({
         fontStyle: "italic",
         textAlign: "center",
         color: "white",
+        fontWeight:"bold",
+        marginTop:10,
     },
     title: {
         fontSize: 50,
@@ -72,34 +75,36 @@ const styles = StyleSheet.create({
     },
     logo: {
         marginTop: 20,
-        width: 230,
-        height: 180,
+        width: 290,
+        height: 300,
     },
     botones: {
         marginTop: 10,
-        borderColor: "black",
-        borderWidth: 3,
+        borderColor: "white",
+        borderWidth: 1,
         width: 300,
         height: 50,
         alignItems: "center",
         borderRadius: 12,
         justifyContent: "center",
-        backgroundColor:"#120934"
+        backgroundColor:"#1a1a2e",
+        // backgroundColor:"#120934"
     },
     btn1: {
         color: "white",
         fontSize: 25,
     },
     Containerdropdown: {
-        alignItems:"center", marginTop:70,
+        alignItems:"center", marginTop:20,
     },
     dropdown: {
         width: 300,
         height:50,
         marginTop: 10,
         borderRadius: 12,
-        backgroundColor: "#0f0e3b",
-        borderColor: "black",
-        borderWidth: 3,
+        backgroundColor:"#1a1a2e",
+        // backgroundColor: "#0f0e3b",
+        borderColor: "white",
+        borderWidth: 1,
     },
 });
