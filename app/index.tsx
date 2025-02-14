@@ -2,11 +2,19 @@ import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Text } from "react-native";
 
+<<<<<<< HEAD
 // PANTALLAS
 import Login from "./(login)/login";
 import About from "./(about)/about";
 
 //DRAWER
+=======
+// Importa las pantallas
+import Login from "./(login)/login";
+import About from "./(about)/about";
+
+// Crea el Drawer Navigator
+>>>>>>> cab9cb604f31c88bf4a7d7cf0b1505b44e566d6f
 const Drawer = createDrawerNavigator();
 
 export default function Navigation() {

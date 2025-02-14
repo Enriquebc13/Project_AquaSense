@@ -86,8 +86,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderRadius: 12,
         justifyContent: "center",
+<<<<<<< HEAD
         backgroundColor:"green",
         // backgroundColor:"#1a1a2e",
+=======
+        backgroundColor:"#1a1a2e",
+>>>>>>> cab9cb604f31c88bf4a7d7cf0b1505b44e566d6f
         // backgroundColor:"#120934"
     },
     btn1: {
