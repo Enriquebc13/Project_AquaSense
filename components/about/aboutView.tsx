@@ -2,46 +2,62 @@ import { ImageBackground, StyleSheet, Text, View } from "react-native";
 
 export default function AboutView() {
     return (
-        <ImageBackground  style={styles.fondo}
-        source={require("../../assets/images/fondo.jpg")}>
-            <Text style={styles.title}>Acerca de</Text>
-            <View style={styles.container}>
-                <Text style={styles.text}>
-                Esta App Fue creada por estudiantes {"\n"}
-                de la Universidad Tecnologica de Izucar de Matamoros {"\n"}
-                </Text>
-         
+        <ImageBackground style={styles.fondo} source={require("../../assets/images/fondo.jpg")}>
+            <View style={styles.overlay}>
+                <Text style={styles.title}>Acerca de</Text>
+                <View style={styles.container}>
+                    <Text style={styles.text}>
+                        Esta App fue creada por estudiantes de la {"\n"}
+                        <Text style={styles.university}>Universidad Tecnológica de Izúcar de Matamoros...</Text>.
+                    </Text>
+                </View>
             </View>
         </ImageBackground>
-
-    )
+    );
 }
 
 const styles = StyleSheet.create({
     fondo: {
-         height:"100%",
-         width:"100%",
-         alignItems:"center",
+        flex: 1,
+        width: "100%",
+        height:"100%",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    overlay: {
+        flex: 1,
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "rgba(0, 0, 0, 0.5)", 
+        paddingHorizontal: 20,
     },
     title: {
-        fontSize: 40,
-        color: "black",
+        fontSize: 42,
+        color: "#fff",
         fontWeight: "bold",
         textAlign: "center",
+        textShadowColor: "rgba(0, 0, 0, 0.8)",
+        textShadowOffset: { width: 2, height: 2 },
+        textShadowRadius: 4,
+        marginBottom: 20,
     },
     container: {
-        marginTop:40,
-        width:350,
-        height:400,
-        borderRadius:10,
-        borderWidth:3,
-        borderColor:"black",
-        backgroundColor:"rgba(0, 0, 0, 0.4)",
-        padding:10,
+        width: "90%",
+        padding: 20,
+        borderRadius: 12,
+        borderWidth: 2,
+        borderColor: "#fff",
+        backgroundColor: "rgba(255, 255, 255, 0.2)", // Transparente para más estilo
+        alignItems: "center",
     },
     text: {
-        color:"white",
-        fontSize:16,
-        textAlign:"center",
-    }
-})
+        color: "#fff",
+        fontSize: 18,
+        textAlign: "center",
+    },
+    university: {
+        fontWeight: "bold",
+        color: "#ffcc00",
+    },
+});

@@ -1,114 +1,152 @@
-import { useState } from "react";
-import { Image, ImageBackground, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import DropDownPicker from "react-native-dropdown-picker";
+import React, { useState } from 'react';
+import {
+  View,
+  TextInput,
+  Alert,
+  TouchableOpacity,
+  StyleSheet,
+  ImageBackground,
+  Image,
+  StatusBar,
+  Text,
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
+  Keyboard
+} from 'react-native';
+import Icon from 'react-native-vector-icons/Feather'; // Íconos para mostrar/ocultar contraseña
+import { validatePassword } from '@/lib/UserDataSource'; // Importa tu función de validación
 
-export default function LoginView() {
-    const [open, setOpen] = useState(false);  // Estado para abrir/cerrar el dropdown
-    const [value, setValue] = useState(null); // Estado para almacenar el valor seleccionado
-    const [items, setItems] = useState([
-        { label: "Administrador", value: "admin" },
-        { label: "Usuario", value: "user" },
-        { label: "Invitado", value: "guest" },
-    ]);
-    
-    return (
-        <>
-        <StatusBar  barStyle="light-content" backgroundColor='#1a1a2e'hidden={false} />
-            <ImageBackground style={styles.fondo}
-            source={require("../../assets/images/fondo.jpg")}>
-                
-            <Text style={styles.welcome}>Bienvenido {"\n"} a</Text>
-            <Text style={styles.title}>A Q U A S E N C E</Text>
-            <Image source={require("../../assets/images/logo.png")} style={styles.logo} />
-           
-            <View style={styles.Containerdropdown}>
-            <DropDownPicker
-                open={open}
-                value={value}
-                items={items}
-                setOpen={setOpen}
-                setValue={setValue}
-                setItems={setItems}
-                placeholder="Selecciona un usuario"
-                style={styles.dropdown}
-                textStyle={{fontSize:25, color: "white" }}
-                dropDownContainerStyle={{ backgroundColor: "#333" }}
-                labelStyle={{ color: "white" }}
+const LoginView = ({ setIsAuthenticated }: { setIsAuthenticated: (value: boolean) => void }) => {
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Función para manejar el inicio de sesión
+  const handleLogin = async () => {
+    setLoading(true);
+    try {
+      const result = await validatePassword(password);
+      if (result === 'Contraseña correcta') {
+        setIsAuthenticated(true);
+        Alert.alert('¡Bienvenido!', 'Contraseña correcta');
+      } else {
+        Alert.alert('Error', 'Contraseña incorrecta');
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <ImageBackground style={styles.fondo} source={require("../../assets/images/fondo.jpg")}>
+      <StatusBar barStyle="light-content" backgroundColor='#1a1a2e' hidden={false} />
+
+      <KeyboardAvoidingView 
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined} 
+        style={{ flex: 1 }}
+      >
+        <ScrollView 
+          contentContainerStyle={styles.scrollContainer}
+          keyboardShouldPersistTaps="handled"
+        >
+          <View style={styles.welcome}>
+            <Text style={styles.welcometext}>Bienvenido a</Text>
+            <Text style={styles.title}>A Q U A S E N S E</Text>
+            <Image style={styles.logo} source={require("../../assets/images/logo.png")} />
+          </View>
+
+          <View style={styles.containerInput}>
+            <TextInput
+              style={styles.input}
+              placeholder='Ingresa tu contraseña'
+              placeholderTextColor={"white"}
+              secureTextEntry={Platform.OS === 'web' ? false : !showPassword}
+              value={password}
+              onChangeText={setPassword}
             />
-            
-
-            <TouchableOpacity style={styles.botones}>
-                <Text style={styles.btn1}>Iniciar Sesión</Text>
+            <TouchableOpacity onPress={() => setShowPassword(!showPassword)} style={{ padding: 10 }}>
+              <Icon name={showPassword ? 'eye' : 'eye-off'} size={20} color="black" />
             </TouchableOpacity>
-            </View>
-            </ImageBackground>
-            </>
-        
-    );
-}
+          </View>
+
+          <TouchableOpacity
+            onPress={handleLogin}
+            disabled={loading}
+            style={[styles.button, { backgroundColor: loading ? '#11212d' : '#1a1a2e' }]}
+          >
+            <Text style={styles.buttonText}>{loading ? 'Cargando...' : 'Iniciar sesión'}</Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </ImageBackground>
+  );
+};
+
+export default LoginView;
+
 const styles = StyleSheet.create({
-    container: {
-        alignItems: "center",
-        // backgroundColor: "#0f0e3b",
-        backgroundColor:"#5fa8d3",
-        flex: 1,
-        paddingTop: 55,
-    },
-    fondo: {
-        width:"100%",
-        height:"100%",
-        alignItems:"center",
-    },
-    welcome: {
-        fontSize: 30,
-        fontStyle: "italic",
-        textAlign: "center",
-        color: "white",
-        fontWeight:"bold",
-        marginTop:10,
-    },
-    title: {
-        fontSize: 50,
-        color: "white",
-        fontWeight: "bold",
-    },
-    logo: {
-        marginTop: 20,
-        width: 290,
-        height: 300,
-    },
-    botones: {
-        marginTop: 10,
-        borderColor: "white",
-        borderWidth: 1,
-        width: 300,
-        height: 50,
-        alignItems: "center",
-        borderRadius: 12,
-        justifyContent: "center",
-<<<<<<< HEAD
-        backgroundColor:"green",
-        // backgroundColor:"#1a1a2e",
-=======
-        backgroundColor:"#1a1a2e",
->>>>>>> cab9cb604f31c88bf4a7d7cf0b1505b44e566d6f
-        // backgroundColor:"#120934"
-    },
-    btn1: {
-        color: "white",
-        fontSize: 25,
-    },
-    Containerdropdown: {
-        alignItems:"center", marginTop:20,
-    },
-    dropdown: {
-        width: 300,
-        height:50,
-        marginTop: 10,
-        borderRadius: 12,
-        backgroundColor:"#1a1a2e",
-        // backgroundColor: "#0f0e3b",
-        borderColor: "white",
-        borderWidth: 1,
-    },
+  fondo: {
+    width: "100%",
+    height: "100%",
+    alignItems: "center",
+  },
+  scrollContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  welcome: {
+    marginTop: 10,
+    alignItems: "center",
+  },
+  welcometext: {
+    color: "white",
+    fontSize: 30,
+    fontWeight: "bold",
+    fontStyle: "italic",
+    textAlign: "center",
+    width:200,
+  },
+  title: {
+    color: "white",
+    fontSize: 50,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  logo: {
+    marginTop:80,
+    width: 250,
+    height: 260,
+  },
+  containerInput: {
+    marginTop:40,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderColor: 'black',
+    borderWidth: 3,
+    borderRadius: 12,
+    width: 280,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    marginBottom:20,
+  },
+  input: {
+    flex: 1,
+    height: 50,
+    paddingLeft: 10,
+    fontSize: 18,
+    color: "white",
+  },
+  button: {
+    marginTop:20,
+    borderRadius: 20,
+    alignItems: 'center',
+    width: 200,
+    height: 50,
+    justifyContent: "center",
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
 });

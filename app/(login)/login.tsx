@@ -1,7 +1,12 @@
-import LoginView from "@/components/login/loginView";
+import React from 'react';
+import LoginView from '../../components/login/loginView';
 
-export default function Login() {
-    return (
-        <LoginView/>
-    )
-}
+type Props = {
+  setIsAuthenticated: (value: boolean) => void;
+};
+
+const Login = ({ setIsAuthenticated }: Props) => {
+  return <LoginView setIsAuthenticated={setIsAuthenticated} />;
+};
+
+export default Login;
