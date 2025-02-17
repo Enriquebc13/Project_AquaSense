@@ -47,7 +47,6 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   // Estado para controlar si el usuario está autenticado
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   return (
     <Drawer.Navigator
       screenOptions={{

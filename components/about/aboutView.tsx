@@ -7,8 +7,8 @@ export default function AboutView() {
                 <Text style={styles.title}>Acerca de</Text>
                 <View style={styles.container}>
                     <Text style={styles.text}>
-                        Esta App fue creada por estudiantes de la {"\n"}
-                        <Text style={styles.university}>Universidad Tecnológica de Izúcar de Matamoros...</Text>.
+                        Esta App fue creada con ayuda de tecnologías como React Native y Supabase para crear esta experiencia. 
+                        
                     </Text>
                 </View>
             </View>

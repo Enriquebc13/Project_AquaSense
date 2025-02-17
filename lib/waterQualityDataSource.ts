@@ -1,12 +1,11 @@
-// lib/waterQualityDataSource.ts
-import { supabase } from './supabase'; // Asegúrate de importar la conexión a Supabase
+import { supabase } from './supabase'; 
 
 export const getWaterQualityData = async () => {
   try {
     const { data, error } = await supabase
-      .from('water_quality') // Nombre de la tabla
-      .select('*') // Selecciona todos los campos
-      .order('timestamp', { ascending: false }); // Ordena por el campo de fecha (timestamp)
+      .from('water_quality') 
+      .select('*') 
+      .order('timestamp', { ascending: false }); 
 
     if (error) {
       throw new Error('Error al obtener los datos de calidad del agua');

@@ -12,7 +12,6 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
-  Keyboard
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather'; // Íconos para mostrar/ocultar contraseña
 import { validatePassword } from '@/lib/UserDataSource'; // Importa tu función de validación
