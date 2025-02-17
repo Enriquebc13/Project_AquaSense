@@ -7,8 +7,7 @@ export default function AboutView() {
                 <Text style={styles.title}>Acerca de</Text>
                 <View style={styles.container}>
                     <Text style={styles.text}>
-                        Esta App fue creada con ayuda de tecnologías como React Native y Supabase para crear esta experiencia. 
-                        
+                        Esta App fue creada con ayuda de tecnologías como React Native y Supabase para crear esta experiencia.
                     </Text>
                 </View>
             </View>
@@ -29,7 +28,7 @@ const styles = StyleSheet.create({
         width: "100%",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "rgba(0, 0, 0, 0.5)", 
+        backgroundColor: "rgba(0, 0, 0, 0.4)", 
         paddingHorizontal: 20,
     },
     title: {
