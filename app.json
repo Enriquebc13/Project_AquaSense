@@ -1,7 +1,12 @@
 {
   "expo": {
+<<<<<<< HEAD
     "name": "Project_AquaSense",
     "slug": "Project_AquaSense",
+=======
+    "name": "AquaSence",
+    "slug": "AquaSence",
+>>>>>>> bfa72bf00db5702559a320e4c19181bba55025f8
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

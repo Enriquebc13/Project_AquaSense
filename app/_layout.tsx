@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 // import { useFonts } from 'expo-font';
 // import { Stack } from 'expo-router';
@@ -44,4 +45,10 @@ import Login from "./login/login";
 
 export default function Layout() {
   return <Navigation/>;
+=======
+import Navigation from "./index";
+
+export default function Layout() {
+  return <Navigation />;
+>>>>>>> bfa72bf00db5702559a320e4c19181bba55025f8
 }
